@@ -1,0 +1,22 @@
+To connect from Azure DevOps to an instance of SonarQube deployed on a private Azure VNet, you'll need to set up a secure network connection between the two environments. Here's a general outline of the steps you'll need to take:
+
+Deploy SonarQube on a Virtual Machine (VM) within the Azure VNet: Ensure that SonarQube is installed and configured correctly on a VM within your private Azure VNet.
+
+Configure Network Security Group (NSG) rules: Allow inbound traffic on the necessary ports (typically 9000 for SonarQube) from the Azure DevOps IP ranges or specific IP addresses that will be accessing SonarQube.
+
+Configure Virtual Network Gateway (if necessary): If you need to establish a site-to-site VPN connection between Azure DevOps and your Azure VNet, you'll need to deploy a Virtual Network Gateway and configure the VPN connection. Alternatively, you can use Azure ExpressRoute for a dedicated private connection.
+
+Expose SonarQube securely: Consider using Azure Application Gateway or Azure Front Door to securely expose SonarQube to the internet while ensuring secure access.
+
+Configure Azure DevOps Pipeline: Within your Azure DevOps project, configure the pipeline tasks to interact with SonarQube. This typically involves tasks such as analyzing code with SonarScanner, publishing analysis results to SonarQube, etc.
+
+Update SonarQube configuration: Ensure that SonarQube is configured to accept requests from the IP address or range of Azure DevOps, as defined in the NSG rules.
+
+Test the connection: Run your Azure DevOps pipeline to analyze code using SonarQube. Ensure that the pipeline can successfully communicate with SonarQube deployed on your private Azure VNet.
+
+By following these steps, you can securely connect Azure DevOps to an instance of SonarQube deployed on a private Azure VNet. Make sure to follow Azure best practices for security and compliance throughout the setup process.
+
+
+
+
+
